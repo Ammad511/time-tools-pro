@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Head } from "@/components/seo/head";
 import { ToolSelector } from "@/components/tools/tool-selector";
 import { EpochConverter } from "@/components/tools/epoch-converter";
@@ -27,8 +27,67 @@ const toolComponents = {
 
 export default function Tools() {
   const [activeTool, setActiveTool] = useState("epoch-converter");
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const toolSectionRef = useRef<HTMLDivElement>(null);
   
   const ActiveToolComponent = toolComponents[activeTool as keyof typeof toolComponents];
+
+  // Handle URL hash changes for direct tool links
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.substring(1);
+      if (hash && toolComponents[hash as keyof typeof toolComponents]) {
+        setActiveTool(hash);
+        setTimeout(() => {
+          if (toolSectionRef.current) {
+            const headerHeight = 64;
+            const elementPosition = toolSectionRef.current.offsetTop - headerHeight;
+            
+            window.scrollTo({
+              top: elementPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 100);
+      }
+    };
+
+    // Check hash on component mount
+    handleHashChange();
+    
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+    
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
+
+  const handleToolChange = (toolId: string) => {
+    if (toolId === activeTool) return;
+    
+    setIsTransitioning(true);
+    
+    // Small delay to show transition
+    setTimeout(() => {
+      setActiveTool(toolId);
+      setIsTransitioning(false);
+    }, 150);
+    
+    // Update URL hash
+    window.history.pushState(null, '', `#${toolId}`);
+    
+    // Smooth scroll to tool section
+    if (toolSectionRef.current) {
+      const headerHeight = 64; // Account for navbar height
+      const elementPosition = toolSectionRef.current.offsetTop - headerHeight;
+      
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen py-8 bg-white dark:bg-slate-900">
@@ -49,10 +108,30 @@ export default function Tools() {
           </p>
         </div>
         
-        <ToolSelector activeTool={activeTool} onToolChange={setActiveTool} />
+        <ToolSelector activeTool={activeTool} onToolChange={handleToolChange} />
         
-        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-200 dark:border-slate-700 p-8">
-          <ActiveToolComponent />
+        <div 
+          ref={toolSectionRef}
+          className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-200 dark:border-slate-700 p-4 md:p-6 lg:p-8 transition-all duration-500 ease-in-out transform tool-section-scroll-indicator"
+          style={{
+            minHeight: '500px',
+            opacity: !isTransitioning ? 1 : 0.7,
+            transform: !isTransitioning ? 'translateY(0)' : 'translateY(10px)'
+          }}
+        >
+          <div className="tool-content-wrapper">
+            {isTransitioning ? (
+              <div className="flex items-center justify-center h-64">
+                <div className="flex items-center space-x-2">
+                  <div className="w-4 h-4 bg-primary rounded-full animate-pulse"></div>
+                  <div className="w-4 h-4 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="w-4 h-4 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                </div>
+              </div>
+            ) : (
+              <ActiveToolComponent />
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -8,6 +8,14 @@ TimeTools Pro is a comprehensive web application that provides professional time
 
 Preferred communication style: Simple, everyday language.
 
+## Recent Changes
+
+- **January 15, 2025**: Added immersive full-screen hero section with mouse-responsive parallax background
+- **January 15, 2025**: Implemented floating glowing particles using Canvas animation responsive to cursor
+- **January 15, 2025**: Added smooth scrolling and auto-reveal functionality for tool sections
+- **January 15, 2025**: Enhanced tool selector with better mobile responsiveness and visual feedback
+- **January 15, 2025**: Added loading transitions and URL hash support for direct tool links
+
 ## System Architecture
 
 ### Frontend Architecture
@@ -36,7 +44,7 @@ Preferred communication style: Simple, everyday language.
 ## Key Components
 
 ### Time Utilities
-The application provides 10 core time tools:
+The application provides 10 core time tools with enhanced user experience:
 1. **Epoch/Unix Timestamp Converter** - Convert between Unix timestamps and human-readable dates
 2. **World Clock** - Display current time across multiple time zones
 3. **Timezone Converter** - Convert time between different time zones
@@ -47,6 +55,14 @@ The application provides 10 core time tools:
 8. **Week Number Finder** - Find ISO week numbers for dates
 9. **Working Days Calculator** - Calculate business days between dates
 10. **Time API** - Mock API endpoints for time-related data
+
+### Enhanced User Experience Features
+- **Immersive Hero Section**: Full-screen (100vh) header with mouse-responsive parallax background
+- **Interactive Particles**: Canvas-based floating glowing particles that respond to cursor movement
+- **Smooth Tool Transitions**: Clicking tool buttons automatically scrolls and reveals the selected tool
+- **URL Hash Support**: Direct links to specific tools (e.g., `/tools#epoch-converter`)
+- **Loading Indicators**: Smooth transition animations between tools
+- **Mobile Optimization**: Responsive design with touch-friendly interactions
 
 ### UI Components
 - Comprehensive shadcn/ui component library including forms, dialogs, navigation, and data display components

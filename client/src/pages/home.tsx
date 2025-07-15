@@ -317,6 +317,15 @@ export default function Home() {
                 <Button 
                   size="lg" 
                   className="px-10 py-4 text-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 border-0 shadow-lg hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105"
+                  onClick={() => {
+                    // Smooth scroll to tools section
+                    setTimeout(() => {
+                      window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                      });
+                    }, 100);
+                  }}
                 >
                   Explore Tools
                 </Button>
@@ -357,7 +366,7 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {tools.map((tool) => (
-              <Link key={tool.id} href="/tools">
+              <Link key={tool.id} href={`/tools#${tool.id}`}>
                 <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-md transition-shadow p-6 border border-gray-200 dark:border-slate-700 cursor-pointer group">
                   <div className="flex items-center mb-4">
                     <div className={`bg-${tool.color}-100 dark:bg-${tool.color}-900 p-3 rounded-lg`}>

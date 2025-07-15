@@ -141,6 +141,71 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Tool section animations */
+.tool-content-wrapper {
+  animation: fadeInTool 0.5s ease-out forwards;
+}
+
+@keyframes fadeInTool {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive tool section */
+@media (max-width: 768px) {
+  .tool-content-wrapper {
+    animation: fadeInToolMobile 0.3s ease-out forwards;
+  }
+  
+  @keyframes fadeInToolMobile {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Scroll indicator for tool section */
+.tool-section-scroll-indicator {
+  position: relative;
+}
+
+.tool-section-scroll-indicator::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+  border-radius: 2px;
+  opacity: 0;
+  animation: scrollIndicator 2s ease-in-out infinite;
+}
+
+@keyframes scrollIndicator {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 640px) {
+  .tool-content-wrapper {
+    padding: 0.5rem;
+  }
+}
+
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
   .hero-title {
