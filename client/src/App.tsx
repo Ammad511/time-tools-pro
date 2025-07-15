@@ -9,6 +9,7 @@ import { Footer } from "@/components/layout/footer";
 import Home from "@/pages/home";
 import Tools from "@/pages/tools";
 import About from "@/pages/about";
+import Blog from "@/pages/blog";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -17,6 +18,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/tools" component={Tools} />
       <Route path="/about" component={About} />
+      <Route path="/blog" component={Blog} />
       <Route component={NotFound} />
     </Switch>
   );

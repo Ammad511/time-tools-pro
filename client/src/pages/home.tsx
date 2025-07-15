@@ -410,6 +410,88 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Blog Section */}
+      <section className="py-24 bg-white dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Latest from Our Blog
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Expert insights on time handling, development tips, and best practices
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <div className="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-slate-700">
+              <div className="flex items-center mb-4">
+                <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-lg">
+                  <i className="fas fa-code text-blue-600 dark:text-blue-400 text-xl"></i>
+                </div>
+                <div className="ml-4">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Development Tips</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Jan 10, 2025</p>
+                </div>
+              </div>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Learn advanced techniques for handling Unix timestamps and time zones in your applications.
+              </p>
+              <Link href="/blog" className="text-primary font-medium hover:text-primary-700">
+                Read More →
+              </Link>
+            </div>
+            
+            <div className="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-slate-700">
+              <div className="flex items-center mb-4">
+                <div className="bg-green-100 dark:bg-green-900 p-3 rounded-lg">
+                  <i className="fas fa-palette text-green-600 dark:text-green-400 text-xl"></i>
+                </div>
+                <div className="ml-4">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">UX Design</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Jan 8, 2025</p>
+                </div>
+              </div>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Best practices for designing intuitive date picker interfaces that work across all devices.
+              </p>
+              <Link href="/blog" className="text-primary font-medium hover:text-primary-700">
+                Read More →
+              </Link>
+            </div>
+            
+            <div className="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-slate-700">
+              <div className="flex items-center mb-4">
+                <div className="bg-purple-100 dark:bg-purple-900 p-3 rounded-lg">
+                  <i className="fas fa-rocket text-purple-600 dark:text-purple-400 text-xl"></i>
+                </div>
+                <div className="ml-4">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Performance</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Jan 5, 2025</p>
+                </div>
+              </div>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Optimization techniques for time-critical applications and high-performance date operations.
+              </p>
+              <Link href="/blog" className="text-primary font-medium hover:text-primary-700">
+                Read More →
+              </Link>
+            </div>
+          </div>
+          
+          <div className="text-center">
+            <Link href="/blog">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="px-8 py-3 text-lg"
+              >
+                View All Articles
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
